@@ -1,8 +1,9 @@
 import { FaRegBookmark, FaShareAlt, FaStar, FaEye } from "react-icons/fa";
 import { format } from "date-fns";
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
-  const { title, author, thumbnail_url, rating, total_view, tags } = news;
+  const { id, title, author, thumbnail_url, rating, total_view, tags } = news;
 
   // Format the date to match the design
   const formattedDate = format(new Date(author.published_date), "yyyy-MM-dd");
@@ -73,9 +74,12 @@ const NewsCard = ({ news }) => {
 
         {/* Read more link */}
         <div className="my-4">
-          <a href="#" className="text-orange-500 hover:underline">
+          <Link
+            to={`/news-details/${id}`}
+            className="text-orange-500 hover:underline"
+          >
             Read More
-          </a>
+          </Link>
         </div>
 
         <hr className="text-base-300" />
